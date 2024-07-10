@@ -36,14 +36,27 @@ function ProductItem({ item }: { item: productItem }) {
 
   return (
     <div className="flex flex-col items-center">
-      <img
-        src={isDesktop ? desktop : isTablet ? tablet : mobile}
-        alt={name}
-        className={`rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
-      />
+      <div
+        className={`relative rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
+      >
+        <Image
+          src={isDesktop ? desktop : isTablet ? tablet : mobile}
+          alt={name}
+          fill
+          priority
+          className="rounded-[0.8rem]"
+          sizes={
+            isDesktop
+              ? "(min-width: 1300px) 24rem"
+              : isTablet
+                ? "(min-width: 600px) 21rem"
+                : "100vw"
+          }
+        />
+      </div>
       {isItemInCart ? (
         <>
-          <div className="-mt-[3rem] flex w-[16rem] items-center justify-between rounded-full bg-[#c73b0f] p-[1.2rem]">
+          <div className="z-20 -mt-[3rem] flex w-[16rem] items-center justify-between rounded-full bg-[#c73b0f] p-[1.2rem]">
             <button onClick={handleDecreaseQuantity}>
               <svg className="h-[2.4rem] w-[2.4rem] fill-white hover:stroke-white">
                 <use xlinkHref="./icon-decrement-quantity.svg#minus"></use>
@@ -62,7 +75,7 @@ function ProductItem({ item }: { item: productItem }) {
         </>
       ) : (
         <button
-          className="group -mt-[3rem] flex w-[16rem] items-center justify-center gap-[0.8rem] rounded-full border border-[#ad8a85] bg-white p-[1.2rem] transition-all duration-300 hover:border-[#c73b0f]"
+          className="group z-20 -mt-[3rem] flex w-[16rem] items-center justify-center gap-[0.8rem] rounded-full border border-[#ad8a85] bg-white p-[1.2rem] transition-all duration-300 hover:border-[#c73b0f]"
           onClick={handleAddToCart}
         >
           <Image
