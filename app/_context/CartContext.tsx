@@ -64,13 +64,17 @@ function cartReducer(state: CartState, action: Action) {
       }
 
     case "DECREASE_QUANTITY":
-      const index2 = state.cart.findIndex(
+      const decreaseIndex = state.cart.findIndex(
         (cartItem) => cartItem.product.name === action.item.name,
       );
 
-      if (index2 !== -1) {
+      if (decreaseIndex !== -1) {
         const updatedCart = [...state.cart];
-        updatedCart[index2].quantity -= 1;
+        if (updatedCart[decreaseIndex].quantity > 1) {
+          updatedCart[decreaseIndex].quantity -= 1;
+        } else {
+          updatedCart.splice(decreaseIndex, 1);
+        }
         return { ...state, cart: updatedCart };
       } else {
         return state;

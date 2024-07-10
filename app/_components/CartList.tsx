@@ -30,7 +30,7 @@ function CartList({ item, quantity }: { item: productItem; quantity: number }) {
         </p>
       </div>
 
-      <button>
+      <button onClick={() => removeFromCart(item)}>
         <Image
           src="./icon-remove-item.svg"
           alt="Remove from cart"

@@ -39,7 +39,7 @@ function ProductItem({ item }: { item: productItem }) {
       <img
         src={isDesktop ? desktop : isTablet ? tablet : mobile}
         alt={name}
-        className={`rounded-[0.8rem] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"}`}
+        className={`rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
       />
       {isItemInCart ? (
         <>
