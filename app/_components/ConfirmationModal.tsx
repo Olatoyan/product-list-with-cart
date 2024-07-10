@@ -15,7 +15,7 @@ function ConfirmationModal() {
 
   return (
     <div
-      className={`inset-0 flex h-full w-full items-center justify-center ${isOrderConfirmed ? "fixed" : "hidden"}`}
+      className={`fixed inset-0 flex h-full w-full items-center justify-center transition-all duration-300 ${isOrderConfirmed ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}
     >
       <div className="z-10 flex max-h-[60rem] w-full max-w-[60rem] flex-col gap-[3.2rem] overflow-auto bg-white p-16">
         <Image
