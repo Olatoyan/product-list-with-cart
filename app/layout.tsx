@@ -7,7 +7,8 @@ const RedHat = Red_Hat_Text({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Product list with cart",
-  description: "",
+  description:
+    "This is the product list with cart challenge from Frontend Mentor. And it was built with NextjS and TailwindCSS. The demo is available on https://toyan-product-list.vercel.app/. And it was built by Olatoyan George https://twitter.com/_annonnymouss_",
 };
 
 export default function RootLayout({
