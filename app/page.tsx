@@ -5,7 +5,7 @@ import { data } from "./_lib/data";
 
 async function page() {
   return (
-    <main className="relative flex items-start justify-around">
+    <main className="laptop:flex-col laptop:items-center relative flex items-start justify-around gap-12">
       <ProductList data={data} />
       <Cart />
       <ConfirmationModal />

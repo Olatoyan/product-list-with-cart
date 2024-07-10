@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { productItem } from "../_lib/data";
 import { useCart } from "../_context/CartContext";
+import useMediaQuery from "../_hooks/useMediaQuery";
 
 function ProductItem({ item }: { item: productItem }) {
   const {
@@ -12,53 +13,39 @@ function ProductItem({ item }: { item: productItem }) {
     image: { desktop, tablet, mobile },
   } = item;
 
-  const {
-    addToCart,
-    cart,
-    decreaseQuantity,
-    increaseQuantity,
-    removeFromCart,
-  } = useCart();
+  const isDesktop = useMediaQuery(
+    "(min-width: 1300px) and (max-width: 2400px)",
+  );
+  const isTablet = useMediaQuery("(min-width: 600px) and (max-width: 1299px)");
+
+  const { addToCart, cart, decreaseQuantity, increaseQuantity } = useCart();
 
   const isItemInCart = cart.some((cartItem) => cartItem.product === item);
 
-  console.log(isItemInCart, item);
-
   function handleAddToCart() {
-    console.log("Add to cart: ", item);
     addToCart(item);
   }
 
-  function handleRemoveFromCart() {
-    console.log("Remove from cart: ", item);
-    removeFromCart(item);
-  }
-
   function handleIncreaseQuantity() {
-    console.log("Increase quantity: ", item);
     increaseQuantity(item);
   }
 
   function handleDecreaseQuantity() {
-    console.log("Decrease quantity: ", item);
     decreaseQuantity(item);
   }
 
   return (
     <div className="flex flex-col items-center">
-      <Image
-        src={desktop}
+      <img
+        src={isDesktop ? desktop : isTablet ? tablet : mobile}
         alt={name}
-        width={240}
-        height={240}
-        className="rounded-[0.8rem]"
+        className={`rounded-[0.8rem] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"}`}
       />
-
       {isItemInCart ? (
         <>
           <div className="-mt-[3rem] flex w-[16rem] items-center justify-between rounded-full bg-[#c73b0f] p-[1.2rem]">
             <button onClick={handleDecreaseQuantity}>
-              <svg className="h-[2.4rem] w-[2.4rem] fill-white stroke-white hover:fill-black hover:stroke-black">
+              <svg className="h-[2.4rem] w-[2.4rem] fill-white hover:stroke-white">
                 <use xlinkHref="./icon-decrement-quantity.svg#minus"></use>
               </svg>
             </button>
@@ -67,7 +54,7 @@ function ProductItem({ item }: { item: productItem }) {
               {cart.find((cartItem) => cartItem.product === item)?.quantity}
             </span>
             <button onClick={handleIncreaseQuantity}>
-              <svg className="h-[2.4rem] w-[2.4rem] fill-white stroke-white hover:fill-black hover:stroke-black">
+              <svg className="h-[2.4rem] w-[2.4rem] fill-white hover:stroke-white">
                 <use xlinkHref="./icon-increment-quantity.svg#add"></use>
               </svg>
             </button>
@@ -89,7 +76,6 @@ function ProductItem({ item }: { item: productItem }) {
           </span>
         </button>
       )}
-
       <div className="flex w-full flex-col gap-[0.4rem] pt-[1.6rem]">
         <p className="text-[1.6rem] font-semibold text-[#260f08]">{category}</p>
         <h2 className="text-[1.4rem] text-[#87635a]">{name}</h2>

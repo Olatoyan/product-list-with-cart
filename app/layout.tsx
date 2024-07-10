@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="text-[62.5%]">
-      <body className={`${RedHat.className} bg-[#fcf8f6] px-16 py-[8.8rem]`}>
+      <body
+        className={`${RedHat.className} bg-[#fcf8f6] px-16 py-[8.8rem] tablet:p-16 mobile:p-10`}
+      >
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

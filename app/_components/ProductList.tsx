@@ -8,7 +8,7 @@ function ProductList({ data }: { data: productItem[] }) {
         Desserts
       </h1>
 
-      <div className="grid grid-cols-3 gap-10">
+      <div className="mobile:grid-cols-1 grid grid-cols-3 gap-10">
         {data.map((item) => (
           <ProductItem key={item.name} item={item} />
         ))}

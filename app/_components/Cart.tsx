@@ -15,9 +15,8 @@ function Cart() {
     0,
   );
 
-  console.log(allItemsInCart);
   return (
-    <aside className="flex w-full max-w-[39rem] flex-col gap-[2.4rem] rounded-[1.2rem] bg-white p-[2.4rem]">
+    <aside className="laptop:max-w-none flex w-full max-w-[39rem] flex-col gap-[2.4rem] rounded-[1.2rem] bg-white p-[2.4rem]">
       <h2 className="text-[2.4rem] font-bold text-[#c73b0f]">
         Your Cart ({allItemsInCart})
       </h2>
