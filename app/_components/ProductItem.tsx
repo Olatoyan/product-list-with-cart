@@ -83,8 +83,8 @@ function ProductItem({ item }: { item: productItem }) {
         </button>
       )}
       <div className="flex w-full flex-col gap-[0.4rem] pt-[1.6rem]">
-        <p className="text-[1.6rem] font-semibold text-[#260f08]">{category}</p>
-        <h2 className="text-[1.4rem] text-[#87635a]">{name}</h2>
+        <p className="text-[1.4rem] text-[#87635a]">{category}</p>
+        <h2 className="text-[1.6rem] font-semibold text-[#260f08]">{name}</h2>
         <span className="text-[1.6rem] font-semibold text-[#c73b0f]">
           ${price.toFixed(2)}
         </span>

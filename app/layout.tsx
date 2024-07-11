@@ -3,7 +3,11 @@ import { Red_Hat_Text } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./_context/CartContext";
 
-const RedHat = Red_Hat_Text({ subsets: ["latin"] });
+const RedHat = Red_Hat_Text({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Product list with cart",
@@ -19,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="text-[62.5%]">
       <body
-        className={`${RedHat.className} bg-[#fcf8f6] px-16 py-[8.8rem] tablet:p-16 mobile:p-10`}
+        className={`${RedHat.className} bg-[#fcf8f6] px-16 py-[8.8rem] font-normal tablet:p-16 mobile:p-10`}
       >
         <CartProvider>{children}</CartProvider>
       </body>
