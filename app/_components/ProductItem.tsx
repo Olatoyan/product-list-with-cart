@@ -45,14 +45,8 @@ function ProductItem({ item }: { item: productItem }) {
           fill
           priority
           className="rounded-[0.8rem] object-cover"
-          // sizes="(max-width: 1800px) 24rem, (max-width: 600px) 100vw"
         />
       </div>
-      {/* <img
-        src={isDesktop ? desktop : isTablet ? tablet : mobile}
-        alt={item.name}
-        className={`relative rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
-      /> */}
       {isItemInCart ? (
         <>
           <div className="z-20 -mt-[3rem] flex w-[16rem] items-center justify-between rounded-full bg-[#c73b0f] p-[1.2rem]">
