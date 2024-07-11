@@ -37,16 +37,22 @@ function ProductItem({ item }: { item: productItem }) {
   return (
     <div className="flex flex-col items-center">
       <div
-        className={`relative aspect-square rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
+        className={`relative rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-full" : isTablet ? "h-[21rem] w-full" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
       >
         <Image
           src={isDesktop ? desktop : isTablet ? tablet : mobile}
           alt={name}
           fill
           priority
-          className={`rounded-[0.8rem] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"}`}
+          className="rounded-[0.8rem] object-cover"
+          // sizes="(max-width: 1800px) 24rem, (max-width: 600px) 100vw"
         />
       </div>
+      {/* <img
+        src={isDesktop ? desktop : isTablet ? tablet : mobile}
+        alt={item.name}
+        className={`relative rounded-[0.8rem] border-[2px] ${isDesktop ? "h-[24rem] w-[24rem]" : isTablet ? "h-[21rem] w-[21rem]" : "h-[21rem] w-full"} ${isItemInCart ? "border-[#c73b0f]" : "border-transparent"}`}
+      /> */}
       {isItemInCart ? (
         <>
           <div className="z-20 -mt-[3rem] flex w-[16rem] items-center justify-between rounded-full bg-[#c73b0f] p-[1.2rem]">
@@ -73,7 +79,7 @@ function ProductItem({ item }: { item: productItem }) {
         >
           <Image
             src="./icon-add-to-cart.svg"
-            alt="Add to cart"
+            alt={`Add ${item.name} to cart`}
             width={24}
             height={24}
           />
